@@ -3,82 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexusScripts | SiteLaunchers</title>
+    <title>SiteLaunchers | Roblox Script Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; color: white; scroll-behavior: smooth; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
-        .glow:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); border-color: rgba(59, 130, 246, 0.5); transition: 0.4s; }
+        body { background-color: #0b0f1a; color: white; scroll-behavior: smooth; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        .glow-card:hover { 
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); 
+            border-color: rgba(59, 130, 246, 0.4); 
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="font-sans antialiased">
 
-    <nav class="sticky top-0 z-50 glass px-6 py-4 flex justify-between items-center">
-        <div class="text-2xl font-bold tracking-tighter text-blue-500">SITE<span class="text-white">LAUNCHERS</span></div>
-        <div class="space-x-8 hidden md:flex font-medium">
+    <nav class="sticky top-0 z-50 glass px-6 py-4 flex justify-between items-center border-b border-white/5">
+        <div class="text-2xl font-black tracking-tighter">SITE<span class="text-blue-500">LAUNCHERS</span></div>
+        <div class="space-x-8 hidden md:flex font-semibold text-sm uppercase tracking-widest">
             <a href="#" class="hover:text-blue-400 transition">Home</a>
             <a href="#scripts" class="hover:text-blue-400 transition">Scripts</a>
-            <a href="https://discord.gg/yourlink" class="hover:text-blue-400 transition">Discord</a>
+            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="hover:text-blue-400 transition">Discord</a>
         </div>
-        <button class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-lg font-bold shadow-lg shadow-blue-900/20 transition">Join Community</button>
+        <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-bold text-sm transition shadow-lg shadow-blue-600/20">
+            JOIN DISCORD
+        </a>
     </nav>
 
-    <header class="py-24 px-6 text-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-slate-900 to-slate-900">
-        <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tight">EXECUTE <span class="text-blue-500">BETTER.</span></h1>
-        <p class="text-gray-400 text-xl max-w-2xl mx-auto mb-12 leading-relaxed">The ultimate hub for high-performance Roblox scripts. Clean code, frequent updates, and zero lag.</p>
-        <div class="flex flex-col md:flex-row justify-center gap-4">
-            <a href="#scripts" class="bg-blue-500 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-400 transition transform hover:scale-105">View All Scripts</a>
-            <a href="#" class="glass px-10 py-4 rounded-xl font-bold hover:bg-white/10 transition">Script Documentation</a>
+    <header class="relative py-24 px-6 text-center overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent -z-10"></div>
+        
+        <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter italic">
+            FAST. <span class="text-gradient">CLEAN.</span> SAFE.
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium">
+            The premier source for Roblox scripts. Optimized for performance and stealth. 
+            Join our community for the latest updates.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#scripts" class="bg-white text-black px-10 py-4 rounded-2xl font-black hover:bg-blue-500 hover:text-white transition duration-300">
+                BROWSE SCRIPTS
+            </a>
+            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="glass px-10 py-4 rounded-2xl font-black hover:bg-white/5 transition">
+                GET SUPPORT
+            </a>
         </div>
     </header>
 
     <main id="scripts" class="max-w-7xl mx-auto px-6 py-20">
-        <div class="flex justify-between items-end mb-12">
-            <div>
-                <h2 class="text-4xl font-extrabold mb-2">Featured Hubs</h2>
-                <p class="text-gray-500">Hand-picked scripts for peak performance.</p>
-            </div>
-            <div class="hidden md:block bg-slate-800 p-1 rounded-lg border border-slate-700">
-                <button class="px-4 py-2 bg-slate-700 rounded-md text-sm font-bold">Newest</button>
-                <button class="px-4 py-2 text-sm font-bold text-gray-400">Popular</button>
-            </div>
+        <div class="mb-16">
+            <h2 class="text-3xl font-black uppercase tracking-tighter mb-2 italic">Current Library</h2>
+            <div class="h-1 w-20 bg-blue-600"></div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="glass p-8 rounded-3xl glow flex flex-col">
-                <div class="flex justify-between items-center mb-6">
-                    <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-                        <i class="fa-solid fa-bolt text-blue-400 text-xl"></i>
+            
+            <div class="glass p-8 rounded-3xl glow-card flex flex-col">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 bg-blue-500/10 rounded-2xl">
+                        <i class="fa-solid fa-skull text-blue-500 text-2xl"></i>
                     </div>
-                    <span class="bg-green-500/10 text-green-400 text-xs font-black px-3 py-1 rounded-full border border-green-500/20">STATUS: WORKING</span>
+                    <span class="text-[10px] font-black bg-white/5 px-3 py-1 rounded-full text-gray-400 border border-white/10 uppercase tracking-widest">v2.1.0</span>
                 </div>
-                <h3 class="text-2xl font-bold mb-3">Universal Admin</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">A massive suite of 200+ commands including fly, speed, and visibility hacks. Compatible with 99% of games.</p>
-                <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/ytealaternos-source/SiteLaunchers/main/admin.lua\'))()')" class="w-full bg-slate-800 hover:bg-blue-600 py-4 rounded-xl font-bold transition flex items-center justify-center gap-3 group">
-                    <span>Copy Loadstring</span>
-                    <i class="fa-solid fa-copy group-hover:rotate-12 transition"></i>
+                <h3 class="text-2xl font-bold mb-2">Blox Fruits Auto-Farm</h3>
+                <p class="text-gray-500 text-sm mb-8 leading-relaxed">Fastest auto-farm on the market. Features include level farm, fruit sniper, and raid auto-complete.</p>
+                <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/ystealaternos-source/SiteLaunchers/main/scripts/bloxfruits.lua\'))()')" 
+                        class="mt-auto w-full bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-600/30 py-4 rounded-2xl font-bold transition flex items-center justify-center gap-3 group">
+                    COPY LOADSTRING <i class="fa-solid fa-code group-hover:scale-110 transition"></i>
                 </button>
             </div>
 
+            <div class="glass p-8 rounded-3xl glow-card flex flex-col">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 bg-purple-500/10 rounded-2xl">
+                        <i class="fa-solid fa-cat text-purple-500 text-2xl"></i>
+                    </div>
+                    <span class="text-[10px] font-black bg-white/5 px-3 py-1 rounded-full text-gray-400 border border-white/10 uppercase tracking-widest">v1.4.2</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">PS99 Infinite Coins</h3>
+                <p class="text-gray-500 text-sm mb-8 leading-relaxed">Includes auto-rank, area farm, and rare egg hatching logic. Safe for daily use.</p>
+                <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/ystealaternos-source/SiteLaunchers/main/scripts/ps99.lua\'))()')" 
+                        class="mt-auto w-full bg-purple-600/10 hover:bg-purple-600 text-purple-400 hover:text-white border border-purple-600/30 py-4 rounded-2xl font-bold transition flex items-center justify-center gap-3 group">
+                    COPY LOADSTRING <i class="fa-solid fa-code group-hover:scale-110 transition"></i>
+                </button>
             </div>
+
+            <div class="glass p-8 rounded-3xl glow-card flex flex-col">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 bg-green-500/10 rounded-2xl">
+                        <i class="fa-solid fa-globe text-green-500 text-2xl"></i>
+                    </div>
+                    <span class="text-[10px] font-black bg-white/5 px-3 py-1 rounded-full text-gray-400 border border-white/10 uppercase tracking-widest">v5.0.0</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Universal Hub</h3>
+                <p class="text-gray-500 text-sm mb-8 leading-relaxed">ESP, Aimbot, Fly, and Speed. Works on nearly every Roblox experience with a simple UI.</p>
+                <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/ystealaternos-source/SiteLaunchers/main/scripts/universal.lua\'))()')" 
+                        class="mt-auto w-full bg-green-600/10 hover:bg-green-600 text-green-400 hover:text-white border border-green-600/30 py-4 rounded-2xl font-bold transition flex items-center justify-center gap-3 group">
+                    COPY LOADSTRING <i class="fa-solid fa-code group-hover:scale-110 transition"></i>
+                </button>
+            </div>
+
+        </div>
     </main>
 
-    <footer class="py-12 border-t border-slate-800 text-center">
-        <p class="text-gray-600 font-medium">Developed by <span class="text-gray-400">ystealaternos-source</span></p>
+    <footer class="py-16 border-t border-white/5 glass mt-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="text-xl font-black mb-2 tracking-tighter">SITE<span class="text-blue-500">LAUNCHERS</span></div>
+                <p class="text-gray-500 text-xs">Developed by ystealaternos-source. Not affiliated with Roblox.</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://discord.gg/Py8bEqJgnD" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-discord text-2xl"></i></a>
+                <a href="https://github.com/ystealaternos-source" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-github text-2xl"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script>
         function copyScript(text) {
-            navigator.clipboard.writeText(text);
-            const btn = event.currentTarget;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "Copied!";
-            btn.classList.add('bg-green-600');
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('bg-green-600');
-            }, 2000);
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.currentTarget;
+                const originalContent = btn.innerHTML;
+                
+                btn.innerHTML = "COPIED TO CLIPBOARD!";
+                btn.style.backgroundColor = "#10b981"; // Success Green
+                btn.style.color = "white";
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.style.backgroundColor = "";
+                    btn.style.color = "";
+                }, 2000);
+            });
         }
     </script>
 </body>
