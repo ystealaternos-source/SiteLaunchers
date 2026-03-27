@@ -3,85 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traplixy Hub | Premium Roblox Scripts</title>
+    <title>Traplixy Hub | Gaming Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #0b0f1a; color: white; scroll-behavior: smooth; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
-        .glow-card { transition: all 0.3s ease; }
-        .glow-card:hover { 
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); 
-            border-color: rgba(59, 130, 246, 0.4); 
-            transform: translateY(-5px);
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+        body { 
+            background-color: #05070a; 
+            color: #e2e8f0; 
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
+
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            mask-image: radial-gradient(circle, black, transparent 80%);
+        }
+
+        .glass { 
+            background: rgba(10, 15, 25, 0.7); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+
+        .glow-card { 
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .glow-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.4);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
         .text-gradient {
-            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .search-focus:focus { box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); border-color: #3b82f6; }
+
+        .pulse { animation: pulse-animation 2s infinite; }
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(59, 130, 246, 0.4); }
+            100% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+        }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="antialiased">
+    <div class="bg-grid"></div>
 
-    <nav class="sticky top-0 z-50 glass px-6 py-4 flex justify-between items-center border-b border-white/5">
-        <div class="text-2xl font-black tracking-tighter uppercase">TRAPLIXY<span class="text-blue-500">HUB</span></div>
-        <div class="space-x-8 hidden md:flex font-semibold text-sm uppercase tracking-widest text-gray-400">
-            <a href="#" class="hover:text-white transition">Home</a>
-            <a href="#scripts" class="hover:text-white transition text-white">Scripts</a>
-            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="hover:text-white transition">Discord</a>
+    <nav class="sticky top-0 z-50 glass px-8 py-4 flex justify-between items-center border-b border-white/5">
+        <div class="text-2xl font-black tracking-tighter uppercase italic">
+            TRAPLIXY<span class="text-blue-500">HUB</span>
         </div>
-        <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-bold text-sm transition shadow-lg shadow-blue-600/20">
-            JOIN COMMUNITY
+        <div class="space-x-8 hidden md:flex font-bold text-xs uppercase tracking-[0.2em] text-gray-400">
+            <a href="#" class="hover:text-blue-400 transition">Dashboard</a>
+            <a href="#scripts" class="hover:text-blue-400 transition text-white">Scripts</a>
+            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="hover:text-blue-400 transition">Community</a>
+        </div>
+        <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-lg font-black text-xs transition transform hover:skew-x-[-10deg] shadow-[4px_4px_0px_#1e40af]">
+            JOIN DISCORD
         </a>
     </nav>
 
-    <header class="relative py-20 px-6 text-center overflow-hidden">
-        <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter italic uppercase">
+    <header class="relative py-20 px-6 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-4">
+            <span class="w-2 h-2 bg-blue-500 rounded-full pulse"></span>
+            Status: Online
+        </div>
+        <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter italic uppercase">
             TRAPLIXY <span class="text-gradient">V2</span>
         </h1>
-        <div class="max-w-xl mx-auto mt-10 relative">
+
+        <div class="max-w-4xl mx-auto mt-12 mb-16">
+            <h2 class="text-xs font-bold tracking-[0.3em] text-blue-500 uppercase mb-6">Latest Showcase</h2>
+            <div class="glass p-4 rounded-3xl shadow-2xl shadow-blue-500/10">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/2CHY-gP8dyM" 
+                            title="YouTube video player" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-xl mx-auto relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition"></div>
             <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-500"></i>
-            <input type="text" id="scriptSearch" onkeyup="searchScripts()" placeholder="Search for Rivals, Arsenal..." 
-                   class="w-full bg-slate-900/50 border border-white/10 py-4 pl-14 pr-6 rounded-2xl outline-none search-focus transition-all text-sm font-medium text-white">
+            <input type="text" id="scriptSearch" onkeyup="searchScripts()" placeholder="SEARCH DATABASE..." 
+                   class="relative w-full bg-[#0d1117] border border-white/10 py-5 pl-14 pr-6 rounded-2xl outline-none transition-all text-sm font-bold tracking-widest text-white focus:border-blue-500">
         </div>
     </header>
 
     <main id="scripts" class="max-w-7xl mx-auto px-6 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="scriptGrid">
             
-            <div class="glass p-8 rounded-3xl glow-card flex flex-col script-card" data-title="rivals">
+            <div class="glass p-8 rounded-2xl glow-card flex flex-col script-card" data-title="rivals">
                 <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-orange-500/10 rounded-2xl"><i class="fa-solid fa-gun text-orange-500 text-2xl"></i></div>
-                    <span class="text-[10px] font-black bg-white/5 px-3 py-1 rounded-full text-gray-400 border border-white/10 uppercase tracking-widest text-orange-400">HOT</span>
+                    <div class="p-4 bg-orange-500/20 rounded-xl border border-orange-500/30">
+                        <i class="fa-solid fa-gun text-orange-500 text-2xl"></i>
+                    </div>
+                    <span class="text-[10px] font-black bg-orange-500/10 px-3 py-1 rounded-md text-orange-500 border border-orange-500/20 uppercase tracking-tighter">Priority</span>
                 </div>
-                <h3 class="text-2xl font-bold mb-2">Rivals Combat Hub</h3>
-                <p class="text-gray-500 text-sm mb-8 leading-relaxed">The ultimate Rivals advantage. Requires a key process to access the full executor script.</p>
-                <a href="https://ystealaternos-source.github.io/scripthub/" target="_blank" class="mt-auto w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-2xl font-bold transition flex items-center justify-center gap-3">
-                    GET SCRIPT <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                <h3 class="text-2xl font-black mb-2 italic uppercase">Rivals Hub</h3>
+                <p class="text-gray-500 text-sm mb-8 font-medium">Advanced features for the latest version. Stable and optimized.</p>
+                <a href="https://ystealaternos-source.github.io/scripthub/" target="_blank" class="mt-auto w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-black transition flex items-center justify-center gap-3 shadow-[0_4px_0_#1e40af] active:shadow-none active:translate-y-[4px]">
+                    GET ACCESS <i class="fa-solid fa-bolt text-xs"></i>
                 </a>
             </div>
 
-            <div class="glass p-8 rounded-3xl glow-card flex flex-col script-card" data-title="arsenal">
+            <div class="glass p-8 rounded-2xl glow-card flex flex-col script-card" data-title="arsenal">
                 <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-red-500/10 rounded-2xl"><i class="fa-solid fa-crosshairs text-red-500 text-2xl"></i></div>
-                    <span class="text-[10px] font-black bg-white/5 px-3 py-1 rounded-full text-gray-400 border border-white/10 uppercase tracking-widest text-red-400">UPDATED</span>
+                    <div class="p-4 bg-red-500/20 rounded-xl border border-red-500/30">
+                        <i class="fa-solid fa-crosshairs text-red-500 text-2xl"></i>
+                    </div>
+                    <span class="text-[10px] font-black bg-red-500/10 px-3 py-1 rounded-md text-red-500 border border-red-500/20 uppercase tracking-tighter">Updated</span>
                 </div>
-                <h3 class="text-2xl font-bold mb-2">Arsenal Silent Aim</h3>
-                <p class="text-gray-500 text-sm mb-8 leading-relaxed">Advanced combat suite for Arsenal. Features include silent aim, FOV settings, and wallbang.</p>
+                <h3 class="text-2xl font-black mb-2 italic uppercase">Arsenal Hub</h3>
+                <p class="text-gray-500 text-sm mb-8 font-medium">Complete utility suite for performance and visuals.</p>
                 <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/ystealaternos-source/SiteLaunchers/main/scripts/arsenal.lua\'))()')" 
-                        class="mt-auto w-full bg-red-600/10 hover:bg-red-600 text-red-400 hover:text-white border border-red-600/30 py-4 rounded-2xl font-bold transition flex items-center justify-center gap-3">
-                    COPY LOADSTRING <i class="fa-solid fa-code text-xs"></i>
+                        class="mt-auto w-full bg-slate-800 hover:bg-slate-700 text-white py-4 rounded-xl font-black transition flex items-center justify-center gap-3 border border-white/5 shadow-[0_4px_0_#000] active:shadow-none active:translate-y-[4px]">
+                    COPY CODE <i class="fa-solid fa-terminal text-xs text-blue-400"></i>
                 </button>
             </div>
 
         </div>
     </main>
 
-    <footer class="py-12 border-t border-white/5 glass mt-20 text-center">
-        <div class="text-xl font-black mb-2 tracking-tighter italic uppercase">TRAPLIXY<span class="text-blue-500">HUB</span></div>
-        <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em]">Developed by ystealaternos-source</p>
+    <footer class="py-16 border-t border-white/5 glass mt-20 text-center">
+        <div class="text-2xl font-black mb-4 italic uppercase">TRAPLIXY<span class="text-blue-500">HUB</span></div>
+        <div class="flex justify-center gap-8 mb-6 text-gray-500">
+            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="hover:text-blue-500 transition text-2xl"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://github.com/ystealaternos-source" target="_blank" class="hover:text-white transition text-2xl"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <p class="text-gray-600 text-[10px] uppercase tracking-[0.4em]">DEVELOPED BY YSTEALATERNOS-SOURCE</p>
     </footer>
 
     <script>
@@ -89,12 +167,12 @@
             navigator.clipboard.writeText(text).then(() => {
                 const btn = event.currentTarget;
                 const originalContent = btn.innerHTML;
-                btn.innerHTML = "COPIED!";
+                btn.innerHTML = "SYSTEM COPIED!";
                 btn.style.backgroundColor = "#10b981";
                 setTimeout(() => {
                     btn.innerHTML = originalContent;
                     btn.style.backgroundColor = "";
-                }, 1500);
+                }, 2000);
             });
         }
 
