@@ -50,7 +50,7 @@
         <div class="max-w-xl mx-auto mt-10 relative">
             <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-500"></i>
             <input type="text" id="scriptSearch" onkeyup="searchScripts()" placeholder="Search for Rivals, Arsenal..." 
-                   class="w-full bg-slate-900/50 border border-white/10 py-4 pl-14 pr-6 rounded-2xl outline-none search-focus transition-all text-sm font-medium">
+                   class="w-full bg-slate-900/50 border border-white/10 py-4 pl-14 pr-6 rounded-2xl outline-none search-focus transition-all text-sm font-medium text-white">
         </div>
     </header>
 
@@ -65,11 +65,10 @@
                     <span class="text-[10px] font-black bg-white/5 px-3 py-1 rounded-full text-gray-400 border border-white/10 uppercase tracking-widest text-orange-400">HOT</span>
                 </div>
                 <h3 class="text-2xl font-bold mb-2">Rivals Combat Hub</h3>
-                <p class="text-gray-500 text-sm mb-8 leading-relaxed">The ultimate Rivals advantage. Features silent aim, fast reload, and automatic win logic.</p>
-                <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/ystealaternos-source/SiteLaunchers/main/scripts/rivals.lua\'))()')" 
-                        class="mt-auto w-full bg-orange-600/10 hover:bg-orange-600 text-orange-400 hover:text-white border border-orange-600/30 py-4 rounded-2xl font-bold transition flex items-center justify-center gap-3 group">
-                    COPY LOADSTRING <i class="fa-solid fa-code group-hover:scale-110 transition text-xs"></i>
-                </button>
+                <p class="text-gray-500 text-sm mb-8 leading-relaxed">The ultimate Rivals advantage. Requires a key process to access the full executor script.</p>
+                <a href="YOUR_LINK_HERE" target="_blank" class="mt-auto w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-2xl font-bold transition flex items-center justify-center gap-3 shadow-lg shadow-blue-600/20">
+                    GET SCRIPT <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </a>
             </div>
 
             <div class="glass p-8 rounded-3xl glow-card flex flex-col script-card" data-title="arsenal">
@@ -91,11 +90,11 @@
     </main>
 
     <footer class="py-12 border-t border-white/5 glass mt-20 text-center">
-        <div class="text-xl font-black mb-2 tracking-tighter italic">SITE<span class="text-blue-500">LAUNCHERS</span></div>
+        <div class="text-xl font-black mb-2 tracking-tighter italic uppercase">SITE<span class="text-blue-500">LAUNCHERS</span></div>
         <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-4">Developed by ystealaternos-source</p>
         <div class="flex justify-center gap-6 opacity-50 hover:opacity-100 transition">
-            <a href="https://discord.gg/Py8bEqJgnD" class="hover:text-blue-400"><i class="fa-brands fa-discord text-xl"></i></a>
-            <a href="https://github.com/ystealaternos-source" class="hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
+            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="hover:text-blue-400"><i class="fa-brands fa-discord text-xl"></i></a>
+            <a href="https://github.com/ystealaternos-source" target="_blank" class="hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
         </div>
     </footer>
 
