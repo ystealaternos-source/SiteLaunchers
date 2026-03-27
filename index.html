@@ -3,52 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traplixy Hub | Gaming Suite</title>
+    <title>Traplixy Hub | Ultimate Gaming Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+        :root {
+            --primary: #3b82f6;
+            --accent: #a855f7;
+        }
 
         body { 
             background-color: #05070a; 
             color: #e2e8f0; 
             font-family: 'Space Grotesk', sans-serif;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
+        /* Feature: Moving Grid Background */
         .bg-grid {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
             z-index: -1;
-            mask-image: radial-gradient(circle, black, transparent 80%);
+            animation: move-grid 20s linear infinite;
+        }
+
+        @keyframes move-grid {
+            from { transform: translateY(0); }
+            to { transform: translateY(50px); }
         }
 
         .glass { 
-            background: rgba(10, 15, 25, 0.7); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
+            background: rgba(10, 15, 25, 0.8); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
         }
 
         .glow-card { 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            border: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         .glow-card:hover { 
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.4);
-            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.3);
+            border-color: var(--primary);
         }
+
+        /* Feature: Toast Notification */
+        #toast {
+            visibility: hidden;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            border-radius: 12px;
+            padding: 16px 30px;
+            position: fixed;
+            z-index: 100;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: slidein 0.5s, slideout 0.5s 2.5s;
+        }
+
+        @keyframes slidein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes slideout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
 
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             border: 2px solid rgba(59, 130, 246, 0.2);
         }
 
@@ -57,103 +96,115 @@
             top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        /* Feature: Toast Notification */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #10b981;
-            color: #fff;
-            text-align: center;
-            border-radius: 12px;
-            padding: 16px;
-            position: fixed;
-            z-index: 100;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        .yt-red {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
         }
-
-        #toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
     </style>
 </head>
 <body class="antialiased">
     <div class="bg-grid"></div>
 
-    <div id="toast">CODE COPIED TO CLIPBOARD!</div>
+    <div class="w-full bg-blue-600/10 border-b border-blue-500/20 py-2 overflow-hidden whitespace-nowrap">
+        <div class="inline-block animate-marquee px-4 text-[10px] font-bold tracking-[0.3em] uppercase text-blue-400">
+            Welcome to Traplixy Hub V2 • New Rivals Script Out Now • Check Discord for Keys • Subscribe to Traplixy on YouTube •
+        </div>
+    </div>
 
-    <nav class="sticky top-0 z-50 glass px-8 py-4 flex justify-between items-center border-b border-white/5">
-        <div class="text-2xl font-black tracking-tighter uppercase italic">
+    <div id="toast">SYSTEM: CODE COPIED</div>
+
+    <nav class="sticky top-0 z-50 glass px-6 py-4 flex justify-between items-center border-b border-white/5">
+        <div class="text-2xl font-black tracking-tighter uppercase italic flex items-center gap-2">
+            <span class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-sm not-italic">T</span>
             TRAPLIXY<span class="text-blue-500">HUB</span>
         </div>
-        <div class="space-x-8 hidden md:flex font-bold text-xs uppercase tracking-[0.2em] text-gray-400">
-            <a href="#" class="hover:text-blue-400 transition">Dashboard</a>
-            <a href="#scripts" class="hover:text-blue-400 transition text-white">Scripts</a>
-            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="hover:text-blue-400 transition">Community</a>
+        
+        <div class="hidden md:flex gap-8 font-bold text-xs uppercase tracking-widest">
+            <a href="#" class="hover:text-blue-400 transition">Home</a>
+            <a href="#scripts" class="hover:text-blue-400 transition">Scripts</a>
+            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="hover:text-blue-400 transition">Discord</a>
         </div>
-        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-blue-600/20 transition">
-            <i class="fa-solid fa-chevron-up text-blue-500"></i>
+
+        <a href="https://youtube.com/@Traplixy" target="_blank" class="hidden md:block bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-full font-black text-[10px] transition uppercase tracking-widest">
+            YouTube
+        </a>
+
+        <button class="md:hidden text-white text-xl">
+            <i class="fa-solid fa-bars-staggered"></i>
         </button>
     </nav>
 
-    <header class="relative py-16 px-6 text-center">
-        <h1 class="text-5xl md:text-7xl font-black mb-12 tracking-tighter italic uppercase">
+    <header class="relative py-16 px-6 text-center max-w-5xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-8">
+            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+            System Online
+        </div>
+
+        <h1 class="text-6xl md:text-9xl font-black mb-12 tracking-tighter italic uppercase">
             TRAPLIXY <span class="text-blue-500">V2</span>
         </h1>
 
-        <div class="max-w-3xl mx-auto mb-16">
-            <div class="glass p-3 rounded-2xl">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/2CHY-gP8dyM" frameborder="0" allowfullscreen></iframe>
-                </div>
+        <div class="glass p-3 rounded-[2rem] shadow-2xl shadow-blue-500/10 mb-10">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/2CHY-gP8dyM" frameborder="0" allowfullscreen></iframe>
             </div>
-            <a href="https://youtube.com/@Traplixy?sub_confirmation=1" target="_blank" class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-red-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-red-700 transition shadow-lg shadow-red-600/20">
-                <i class="fa-brands fa-youtube"></i> Subscribe for Updates
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-20">
+            <a href="https://youtube.com/@Traplixy?sub_confirmation=1" target="_blank" class="yt-red px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-widest italic flex items-center gap-3 hover:scale-105 transition">
+                <i class="fa-brands fa-youtube"></i> Subscribe
+            </a>
+            <a href="https://discord.gg/Py8bEqJgnD" target="_blank" class="glass px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-widest italic flex items-center gap-3 hover:bg-white/5 transition border border-white/10">
+                <i class="fa-brands fa-discord text-blue-400"></i> Join Discord
             </a>
         </div>
-        
-        <div class="max-w-xl mx-auto relative">
-            <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-gray-500"></i>
-            <input type="text" id="scriptSearch" onkeyup="searchScripts()" placeholder="FILTER SCRIPTS..." 
-                   class="w-full bg-[#0d1117] border border-white/10 py-5 pl-14 pr-6 rounded-2xl outline-none text-sm font-bold tracking-widest text-white focus:border-blue-500 transition-all">
+
+        <div class="max-w-2xl mx-auto relative group">
+            <div class="absolute -inset-1 bg-blue-600 rounded-2xl blur opacity-10 group-focus-within:opacity-30 transition"></div>
+            <i class="fa-solid fa-terminal absolute left-6 top-1/2 -translate-y-1/2 text-blue-500/50"></i>
+            <input type="text" id="scriptSearch" onkeyup="searchScripts()" placeholder="SEARCH SCRIPTS..." 
+                   class="relative w-full bg-[#0d1117] border border-white/10 py-6 pl-16 pr-6 rounded-2xl outline-none text-sm font-bold tracking-[0.2em] text-white focus:border-blue-500/50 transition-all uppercase">
         </div>
     </header>
 
-    <main id="scripts" class="max-w-7xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <main id="scripts" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             
-            <div class="glass p-8 rounded-2xl glow-card script-card" data-title="rivals">
-                <div class="flex justify-between items-center mb-6">
-                    <div class="p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
-                        <i class="fa-solid fa-fire text-orange-500 text-xl"></i>
+            <div class="glass p-10 rounded-[2.5rem] glow-card script-card flex flex-col" data-title="rivals">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-2xl border border-blue-500/30 flex items-center justify-center">
+                        <i class="fa-solid fa-crosshairs text-blue-500 text-2xl"></i>
                     </div>
-                    <span class="text-[10px] font-black text-orange-500 border border-orange-500/30 px-2 py-1 rounded">HOT</span>
+                    <span class="text-[9px] font-black bg-white/5 px-3 py-1 rounded text-gray-400 uppercase tracking-widest">v4.1</span>
                 </div>
-                <h3 class="text-xl font-black mb-4 uppercase italic">Rivals Combat Hub</h3>
-                <a href="https://ystealaternos-source.github.io/scripthub/" target="_blank" class="block w-full bg-blue-600 text-center py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-blue-500 transition">Get Hub</a>
+                <h3 class="text-2xl font-black mb-4 uppercase italic">Rivals Combat</h3>
+                <p class="text-gray-500 text-sm mb-10 leading-relaxed font-medium">The most optimized combat suite for Rivals. Features advanced bypasses and visuals.</p>
+                <a href="https://ystealaternos-source.github.io/scripthub/" target="_blank" class="mt-auto w-full bg-blue-600 py-5 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-blue-500 transition text-center">Get Script</a>
             </div>
 
-            <div class="glass p-8 rounded-2xl glow-card script-card" data-title="arsenal">
-                <div class="flex justify-between items-center mb-6">
-                    <div class="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
-                        <i class="fa-solid fa-crosshairs text-red-500 text-xl"></i>
+            <div class="glass p-10 rounded-[2.5rem] glow-card script-card flex flex-col" data-title="arsenal">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-14 h-14 bg-purple-600/20 rounded-2xl border border-purple-500/30 flex items-center justify-center">
+                        <i class="fa-solid fa-gun text-purple-500 text-2xl"></i>
                     </div>
-                    <span class="text-[10px] font-black text-red-500 border border-red-500/30 px-2 py-1 rounded">NEW</span>
+                    <span class="text-[9px] font-black bg-purple-500/10 px-3 py-1 rounded text-purple-400 uppercase tracking-widest">Updated</span>
                 </div>
-                <h3 class="text-xl font-black mb-4 uppercase italic">Arsenal Silent Aim</h3>
+                <h3 class="text-2xl font-black mb-4 uppercase italic">Arsenal Hub</h3>
+                <p class="text-gray-500 text-sm mb-10 leading-relaxed font-medium">Silent aim, ESP, and weapon mods. Constant updates for the latest version.</p>
                 <button onclick="copyScript('loadstring(game:HttpGet(\'https://raw.githubusercontent.com/ystealaternos-source/SiteLaunchers/main/scripts/arsenal.lua\'))()')" 
-                        class="w-full bg-slate-800 text-center py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-slate-700 transition border border-white/5">Copy Loadstring</button>
+                        class="mt-auto w-full bg-slate-800 py-5 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-slate-700 transition border border-white/5">Copy Code</button>
             </div>
 
         </div>
     </main>
+
+    <footer class="py-20 border-t border-white/5 glass text-center">
+        <div class="text-2xl font-black mb-8 italic uppercase tracking-tighter">TRAPLIXY<span class="text-blue-500">HUB</span></div>
+        <p class="text-gray-600 text-[10px] uppercase tracking-[0.5em] mb-10">© 2026 Traplixy Gaming</p>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-12 h-12 rounded-full glass inline-flex items-center justify-center hover:text-blue-500 transition">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+    </footer>
 
     <script>
         function showToast() {
